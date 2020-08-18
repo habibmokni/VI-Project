@@ -12,7 +12,7 @@
           currency: ["", "\u00a0€"],
         })
         .format(",d");
-      // Process the data
+      // Process data
       const detailsColumns = data.columns.slice(2);
       const accessor = {
         state: (d) => d[data.columns[0]].trim(),
@@ -30,7 +30,7 @@
       dataByYearByState.accessor = accessor;
       dataByYearByState.formatValue = formatValue;
 
-      // Rendering
+      // Render
       const dispatch = d3.dispatch("yearchange", "statechange");
       const years = [...dataByYearByState.keys()];
       renderYearSelect({
@@ -52,6 +52,11 @@
         color,
         textColor,
         dispatch,
+      });
+      renderLegend({
+        el: document.querySelector("#GeoMap .panel-main"),
+        title: "Insgesamt",
+        color: color,
       });
       renderSideDetails({
         el: document.querySelector("#GeoMap .panel-side"),
@@ -201,6 +206,82 @@
       selectedYear = year;
       render();
     });
+  }
+
+  // Adapted from https://observablehq.com/@d3/color-legend
+  function renderLegend({ el, title, color }) {
+    const tickSize = 6,
+      width = 320,
+      height = 44 + tickSize,
+      marginTop = 18,
+      marginRight = 0,
+      marginBottom = 16 + tickSize,
+      marginLeft = 0,
+      ticks = width / 64;
+
+    const thresholds = [0].concat(
+      color
+        .range()
+        .map((d) => color.invertExtent(d))
+        .map((d) => d[1])
+    );
+    const tickValues = d3.range(thresholds.length);
+    const thresholdFormat = d3.format("~s");
+    const tickFormat = (i) => thresholdFormat(thresholds[i], i);
+
+    const x = d3
+      .scaleLinear()
+      .domain([0, color.range().length])
+      .rangeRound([marginLeft, width - marginRight]);
+
+    let tickAdjust = (g) =>
+      g.selectAll(".tick line").attr("y1", marginTop + marginBottom - height);
+
+    const container = d3
+      .select(el)
+      .append("div")
+      .attr("class", "geo-map-legend");
+
+    const svg = container
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .style("overflow", "visible");
+
+    svg
+      .append("g")
+      .selectAll("rect")
+      .data(color.range())
+      .join("rect")
+      .attr("x", (d, i) => x(i))
+      .attr("y", marginTop)
+      .attr("width", (d, i) => x(i + 1) - x(i))
+      .attr("height", height - marginTop - marginBottom)
+      .attr("fill", (d) => d);
+
+    svg
+      .append("g")
+      .attr("transform", `translate(0,${height - marginBottom})`)
+      .call(
+        d3
+          .axisBottom(x)
+          .ticks(ticks)
+          .tickFormat(tickFormat)
+          .tickSize(tickSize)
+          .tickValues(tickValues)
+      )
+      .call(tickAdjust)
+      .call((g) => g.select(".domain").remove())
+      .call((g) =>
+        g
+          .append("text")
+          .attr("x", marginLeft)
+          .attr("y", marginTop + marginBottom - height - 6)
+          .attr("fill", "currentColor")
+          .attr("text-anchor", "start")
+          .attr("font-weight", "bold")
+          .text(title)
+      );
   }
 
   function renderSideDetails({ el, data, dispatch }) {

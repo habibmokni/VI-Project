@@ -79,6 +79,6 @@
   margin-bottom: 0.5rem;
 }
 
-.panel-side {
-  max-width: 300px;
+.geo-map-legend {
+  text-align: center;
 }

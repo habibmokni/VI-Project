@@ -106,7 +106,7 @@
 
     function resize() {
       const width = svg.node().clientWidth;
-      const mapWidth = Math.min(width, 400); // Give the map a maximum width so it doesn't become too large
+      const mapWidth = Math.min(width, 500); // Give the map a maximum width so it doesn't become too large
       const height = mapWidth * ratio;
       svg.attr("viewBox", [0, 0, width, height]);
       projection.fitExtent(

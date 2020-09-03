@@ -64,10 +64,11 @@
 }
 
 .geo-map-details .name {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
   font-weight: 500;
-  line-height: 1.2;
+  line-height: 1.7;
+  color: orangered;
 }
 
 .geo-map-details .details {
@@ -80,5 +81,18 @@
 }
 
 .geo-map-legend {
+  padding-top: 2rem;
   text-align: center;
+}
+
+.panel-side {
+  padding-top: 2.5rem;
+  min-width: 300px;
+  /* border: 1px solid #343a40; 
+  border-radius: 15px;
+  text-align: center;*/
+}
+
+.panel-control {
+  margin-top: -5rem;
 }

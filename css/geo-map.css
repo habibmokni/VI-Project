@@ -96,12 +96,11 @@
 .panel-control {
   margin-top: -5rem;
 }
-.ban{
-  background-image: url('../img/banner.jpg');
+/* .ban {
+  background-image: url("../img/banner.jpg");
   background-size: cover;
-    background-position:  center center;
-    background-repeat: no-repeat;
-    height: 350px;
-    width: 100%;
-
-}
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 350px;
+  width: 100%;
+} */

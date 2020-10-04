@@ -1,8 +1,8 @@
-/*!
- * Start Bootstrap - Scrolling Nav (https://startbootstrap.com/template-overviews/scrolling-nav)
- * Copyright 2013-2019 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-scrolling-nav/blob/master/LICENSE)
- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 header {
   padding: 156px 0 100px;
 }
@@ -10,12 +10,115 @@ header {
 section {
   padding: 150px 0;
 }
-h2{
+h2 {
   font-weight: bold;
-  color: #47c9af;
+  /* color: #47c9af; */
+  color: #990000;
   font-size: 32px;
 }
 
-h3{
+h3 {
   color: #363636;
+}
+
+#Einleitung {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(253, 186, 132, 0.486),
+      rgb(215, 48, 31, 0.6)
+    ),
+    url(../img/1209.jpg);
+  background-size: cover;
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+.logo-box {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logo {
+  height: 70px;
+}
+.mmi-logo {
+  height: 40px;
+}
+.text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.banner-heading {
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.heading-primary-main {
+  display: block;
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: 20px;
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+
+.heading-primary-sub {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 20px;
+  text-align: center;
+  animation-name: moveInRight;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+
+.heading-primary-subsub {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 15px;
+  text-align: center;
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+.description {
+  margin-top: -100px;
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  80% {
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  80% {
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }

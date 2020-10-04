@@ -41,10 +41,26 @@
       const color = d3
         .scaleQuantize()
         .domain([0, 12e6])
-        .range(["#fef0d9", "#fdcc8a", "#fc8d59", "#d7301f"]);
+        .range([
+          "#fff7ec",
+          "#fee8c8",
+          "#fdd49e",
+          "#fdbb84",
+          "#fc8d59",
+          "#ef6548",
+          "#d7301f",
+          "#990000",
+        ]);
       const textColor = color
         .copy()
-        .range(["#212529", "#212529", "#ffffff", "#ffffff"]);
+        .range([
+          "#212529",
+          "#212529",
+          "#ffffff",
+          "#ffffff",
+          "#ffffff",
+          "#ffffff",
+        ]);
       renderGeoMap({
         el: document.querySelector("#GeoMap .panel-main"),
         data: dataByYearByState,

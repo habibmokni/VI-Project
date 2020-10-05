@@ -96,6 +96,14 @@
 .panel-control {
   margin-top: -5rem;
 }
+
+#GeoMapYearSelect {
+  max-width: 200px;
+}
+
+.ul-geomap {
+  margin-left: 90px;
+}
 /* .ban {
   background-image: url("../img/banner.jpg");
   background-size: cover;

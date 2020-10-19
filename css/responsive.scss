@@ -1,0 +1,35 @@
+html {
+  @media (max-width: 400px) {
+    .heading-primary-main {
+      display: block;
+      font-size: 20px;
+      font-weight: 200;
+      letter-spacing: 4px;
+      animation-name: moveInLeft;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
+    }
+
+    .heading-primary-sub {
+      display: block;
+      font-size: 10px;
+      font-weight: 100;
+      letter-spacing: 8px;
+      text-align: center;
+      animation-name: moveInRight;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
+    }
+
+    .heading-primary-subsub {
+      display: block;
+      font-size: 8px;
+      font-weight: 100;
+      letter-spacing: 5px;
+      text-align: center;
+      animation-name: moveInLeft;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
+    }
+  }
+}

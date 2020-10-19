@@ -5,7 +5,7 @@ const svg = d3
   .attr("height", 600);
 
 // create margins and dimensions
-const margin = { top: 20, right: 20, bottom: 100, left: 100 };
+const margin = { top: 20, right: 50, bottom: 50, left: 80 };
 const graphWidth = 600 - margin.left - margin.right;
 const graphHeight = 600 - margin.top - margin.bottom;
 
@@ -41,11 +41,22 @@ d3.json("./data/electrocars.json").then((data) => {
 
   //join the data to rects
   const rects = graph.selectAll("rect").data(data);
+  const labels = graph
+    .selectAll("rect")
+    .data(data)
+    .enter()
+    .append('text')
+    .text((d => d.totalEcars))
+    .attr('x', d => x(d.year) + x.bandwidth()/2)
+    .attr('y', d => y(d.totalEcars) - 8)
+    .attr('text-anchor', 'middle')
+    .attr("font-weight", "bold")
+    .classed('label', true);
 
   rects
     .attr("width", x.bandwidth)
     .attr("height", (d) => graphHeight - y(d.totalEcars))
-    .attr("fill", "#9BC234")
+    .attr("fill", "#02A13B")
     .attr("x", (d) => x(d.year))
     .attr("y", (d) => y(d.totalEcars));
 
@@ -55,24 +66,24 @@ d3.json("./data/electrocars.json").then((data) => {
     .append("rect")
     .attr("width", x.bandwidth)
     .attr("height", (d) => graphHeight - y(d.totalEcars))
-    .attr("fill", "#9BC234")
+    .attr("fill", "#02A13B")
     .attr("x", (d) => x(d.year))
     .attr("y", (d) => y(d.totalEcars))
     .on("mouseenter", function () {
-      d3.select(this).attr("fill", "#7c9b29");
+      d3.select(this).attr("fill", "#017029");
     })
     .on("mouseleave", function () {
-      d3.select(this).attr("fill", "#9BC234");
+      d3.select(this).attr("fill", "#02A13B");
     });
   // create and call the axes
 
-  const xAxis = d3.axisBottom(x);
+  const xAxis = d3.axisBottom(x).tickSizeOuter(0);
   const yAxis = d3.axisLeft(y);
   //.tickFormat((d) => d + " T");
 
   xAxisGroup.call(xAxis);
-  yAxisGroup.call(yAxis);
+  // yAxisGroup.call(yAxis);
 
-  xAxisGroup.selectAll("text").attr("font-weight", "bold");
-  yAxisGroup.selectAll("text").attr("font-weight", "bold");
+  xAxisGroup.selectAll("text").attr("font-weight", "bold").attr('font-size', 16);
+  // yAxisGroup.selectAll("text").attr("font-weight", "bold");
 });

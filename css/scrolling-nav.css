@@ -56,6 +56,9 @@ h3 {
 .banner-heading {
   color: #ffffff;
   text-transform: uppercase;
+  @media screen (max-width: 767px) {
+    color: blue;
+  }
 }
 
 .heading-primary-main {
@@ -66,6 +69,9 @@ h3 {
   animation-name: moveInLeft;
   animation-duration: 1s;
   animation-timing-function: ease-out;
+  @media only screen and (max-width: 767px) {
+    font-size: 2px;
+  }
 }
 
 .heading-primary-sub {

@@ -112,3 +112,12 @@
   height: 350px;
   width: 100%;
 } */
+
+.label {
+  fill: #006400;
+}
+
+#elect-car {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  padding: 2rem;
+}

@@ -5,7 +5,7 @@ const svg = d3
   .attr("height", 600);
 
 // create margins and dimensions
-const margin = { top: 20, right: 50, bottom: 50, left: 80 };
+const margin = { top: 70, right: 50, bottom: 50, left: 80 };
 const graphWidth = 600 - margin.left - margin.right;
 const graphHeight = 600 - margin.top - margin.bottom;
 
@@ -46,12 +46,23 @@ d3.json("./data/electrocars.json").then((data) => {
     .data(data)
     .enter()
     .append('text')
-    .text((d => d.totalEcars))
+    .text((d => d.totalEcars), (d=> d.percent))
     .attr('x', d => x(d.year) + x.bandwidth()/2)
     .attr('y', d => y(d.totalEcars) - 8)
     .attr('text-anchor', 'middle')
     .attr("font-weight", "bold")
     .classed('label', true);
+
+  const percent = graph
+    .selectAll("rect")
+    .data(data)
+    .enter()
+    .append('text')
+    .text((d => d.percent))
+    .attr('x', d => x(d.year) + x.bandwidth()/2)
+    .attr('y', d => y(d.totalEcars) - 25)
+    .attr('text-anchor', 'middle')
+    .classed('percent', true);
 
   rects
     .attr("width", x.bandwidth)
@@ -71,6 +82,7 @@ d3.json("./data/electrocars.json").then((data) => {
     .attr("y", (d) => y(d.totalEcars))
     .on("mouseenter", function () {
       d3.select(this).attr("fill", "#017029");
+
     })
     .on("mouseleave", function () {
       d3.select(this).attr("fill", "#02A13B");

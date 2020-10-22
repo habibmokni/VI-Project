@@ -1,26 +1,32 @@
 [
   {
     "year": "2015",
-    "totalEcars": 18948
+    "totalEcars": 18948,
+    "percent":"(+55,8%)"
   },
   {
     "year": "2016",
-    "totalEcars": 25502
+    "totalEcars": 25502,
+    "percent": "(+34,5%)"
   },
   {
     "year": "2017",
-    "totalEcars": 34022
+    "totalEcars": 34022,
+    "percent": "(+33,4%)"
   },
   {
     "year": "2018",
-    "totalEcars": 53861
+    "totalEcars": 53861,
+    "percent":"(+58,3%)"
   },
   {
     "year": "2019",
-    "totalEcars": 83175
+    "totalEcars": 83175,
+    "percent":"(+54,4%)"
   },
   {
     "year": "2020",
-    "totalEcars": 136617
+    "totalEcars": 136617,
+    "percent":"(+64,2%)"
   }
 ]

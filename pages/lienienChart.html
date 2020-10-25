@@ -8,6 +8,7 @@
     />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    <script type="text/javascript", src="https://d3js.org/d3.v4.js"></script>  <!-- Load d3.js -->
     <script
       src="https://code.jquery.com/jquery-latest.min.js"
       type="text/javascript"
@@ -22,18 +23,16 @@
     ></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js" type="text/javascript"></script> -->
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="https://d3js.org/d3-scale.v3.min.js"></script>
-    <script src="https://d3js.org/d3-array.v2.min.js"></script>
+
     <title>VI-Project</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
-    <link href="css/scrolling-nav.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/geo-map.css" />
-    <link rel="stylesheet" href="css/responsive.scss" />
+    <link href="../css/scrolling-nav.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/geo-map.css" />
+    <link rel="stylesheet" href="../css/responsive.scss" />
 
   </head>
 
@@ -45,7 +44,7 @@
     >
       <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
-          <img src="img/MMI.png" alt="MMI-logo" class="mmi-logo" />
+          <img src="../img/MMI.png" alt="MMI-logo" class="mmi-logo" />
           MMI- Visualisierung Projekt</a
         >
         <button
@@ -120,8 +119,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="./pages/lienienChart.html" target="_blank">
-                
+              <a class="nav-link js-scroll-trigger" href="#carstypes">
                 <svg
                   width="1em"
                   height="1em"
@@ -168,7 +166,7 @@
     <section class="banner" id="Einleitung">
       <div class="logo-box">
         <img
-          src="img/2000px-Flag_map_of_Germany.svg.png"
+          src="../img/2000px-Flag_map_of_Germany.svg.png"
           alt="logo-DE"
           class="logo"
         />
@@ -197,95 +195,34 @@
         <div class="ban">
           <div class="row description">
             <div class="col-lg-8 mx-auto">
-              <h2>Project Description</h2>
-              <p class="lead">
-                In diesem Visualisierungsprojekt werden wir die Daten aus der PDF-Jahrespressemitteilung des <a
-                href="https://www.kba.de/DE/Presse/Pressemitteilungen/pressemitteilungen_node.html"
-                >KBA (Kraftfahrt-Bundesamt)</a
-              > visualisieren,
-                die aktuelle Informationen zum Automobil in Deutschland enthält.
-                Die folgenden Grafiken zeigen einen Überblick über die grafische Verteilung der Autos nach Bundesländern und mit Typen und Details,
-                Elektroautos in Deutschland und die beliebtesten Automarken in den letzten 6 Jahren.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- GeoMap -->
-    <section id="GeoMap" class="bg-light">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="panel-control col-12 col-lg-8">
-            <div class="form-group-row">
-              <h2>Fahrzeugbestand GeoMap</h2>
+              <h2>Zugelassene PKWs nach Kraftstoffart von 2015 bis 2020 in Deutschland</h2>
               <p>
-                Diese Grafik zeigt die Gesamtzahl der Pkw pro Bundesland in
-                Deutschland für die letzten 6 Jahre. Die in dieser Grafik
-                verwendeten Daten stammen aus den jährlichen Pressemitteilungen
-                von
-                <a
-                  href="https://www.kba.de/DE/Presse/Pressemitteilungen/pressemitteilungen_node.html"
-                  >KBA (Kraftfahrt-Bundesamt)</a
-                >.
+                Die folgende Grafik zeigt einen Überblick über die grafische Änderung der PKWs nach 
+                ausgewählten Kraftstoffarten in der vergangenen 6 Jahren in Deutschland.
               </p>
-              <hr />
-              <ul class="ul-geomap">
-                <li>Jahr auswählen</li>
-                <li>
-                  Mit der Maus über den Staat "Hovern", um die Gesamtzahl zu
-                  sehen.
-                </li>
-                <li>Auf den Staat Klicken, um weitere Details zu sehen.</li>
-              </ul>
-              <hr />
             </div>
-            <div class="form-group row">
-              <label for="geo-map-year-select" class="col-2 col-form-label"
-                >Jahr</label
-              >
-              <div class="col-10">
-                <select
-                  class="custom-select form-control"
-                  id="GeoMapYearSelect"
-                ></select>
-              </div>
-            </div>
-          </div>
-          <div class="panel-main col-12 col-lg-6"></div>
-          <div class="panel-side col-12 col-lg-2"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- >Electic Cars BarChart -->
-    <section id="BarChart">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-8 mx-auto">
-            <h2>Anzahl der Elektroautos in Deutschland von 2015 bis 2020</h2>
-            <p>
-              Diese Grafik zeigt die Zunahme der Nutzung von E-Auto in Deutschland in den letzten 6 Jahren.
-               Sie veranschaulicht die Nutzungszahlen in Abhängigkeit von den Jahren und zeigt die Entwicklung der Verbreitung 
-               von E-Autos auf den deutschen Märkten, die durch die Nutzung durch deutsche Staatsbürger gekennzeichnet ist.            </p>
-            <br>
-            <hr>
-            <br>
-            <div id="elect-car">
-              <div class="canvas"></div>
-            </div>
-            
           </div>
         </div>
       </div>
     </section>
 
+    
     <!-- cars types BarChart -->
     <section id="carstypes" class="bg-light">
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 mx-auto"> <a class="nav-link js-scroll-trigger" href="./pages/lienienChart.html" target="_blank">
+          <div class="col-lg-8 mx-auto">
+            <!-- Button erstellen durch update Funktion -->
+<button style= "background-color: #d7191c;" onclick="update(data1)">Benzin</button>
+<button style= "background-color: #a6611a;" onclick="update(data2)">Diesel</button>
+<button style= "background-color: #cd950c;" onclick="update(data3)">FlüssigGas</button>
+<button style= "background-color: #eec900;" onclick="update(data4)">ErdGas</button>
+<button style= "background-color: #abd9e9;" onclick="update(data5)">Hybrid</button>
+<button style= "background-color: #7fff00;" onclick="update(data6)">Elektro</button>
+
+<!-- div erstellen für graph Platz -->
+<div id="my_dataviz"></div>
+
           </div>
         </div>
       </div>
@@ -319,13 +256,11 @@
       <!-- /.container -->
     </footer>
 
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="js/scrolling-nav.js"></script>
-    <script src="js/geo-map.js"></script>
-    <script src="js/electrocars.js"></script>
-    <!-- <script src="js/electrocars-2.js"></script> -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../js/scrolling-nav.js"></script>
+    <script src="../js/lienienChart.js"></script>
 
   </body>
 </html>
